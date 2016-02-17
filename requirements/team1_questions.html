@@ -33,7 +33,6 @@ on 11/02/16 regarding his need for software to normalize mailing addresses.
 </ul>
 
 <table>
-<!--  <caption>Revision H istory</caption> !-->
   <tr>
     <th>Date</th>
     <th>Revision Reason</th>
@@ -46,10 +45,12 @@ on 11/02/16 regarding his need for software to normalize mailing addresses.
   </tr>
   <tr>
     <td>16/02/16</td>
-    <td>First Pass at Fixing Dr. Beck's Criticisms</td>
+    <td>Revision 1: New questions added and organization changed.</td>
     <td>Aidan Talerico</td>
   </tr>
 </table>
+
+<p>New questions added in later revisions should have their revision number listed after their identifier.</p>
 
 <h1>Questions</h1>
 <p><b>A.</b> Actors</p>
@@ -80,9 +81,9 @@ different permissions levels?</p>
     <p class="answer">&emsp;&emsp;There are not different classes of users in the system.</p>    
       <p>&emsp;&emsp;&emsp;<b>B.1.4.1</b> If so, what which users need to see what?</p>
         <p class="answer">&emsp;&emsp;&emsp;See above answer.</p>
-    <p>&emsp;&emsp;<b>B.1.5 R1</b>Should the output contain only normalized addresses?</p>
+    <p>&emsp;&emsp;<b>B.1.5 R1</b> Should the output contain only normalized addresses?</p>
     <p class="answer">&emsp;&emsp;Using multiple out files is acceptable.</p>
-    <p>&emsp;&emsp;<b>B.1.6 R1</b>Does the system need to be able to handle business addresses?</p>
+    <p>&emsp;&emsp;<b>B.1.6 R1</b> Does the system need to be able to handle business addresses?</p>
     <p class="answer">&emsp;&emsp;Yes the system must be able to process business addresses. Users will specify if an address is personal or business..</p>  
     <p>&emsp;<b>B.2</b> Address Handling Specifics </p>
                 <p>&emsp;&emsp;<b>B.2.1</b> If an aspect of address is found to be invalid and repair is impossible, what
@@ -96,13 +97,13 @@ be handled?</p>
     <p class="answer">&emsp;&emsp;They should be ignored if they would affect processing.</p>    
 <p>&emsp;&emsp;<b>B.2.4</b> Is it appropriate to attempt to correct spelling errors in certain fields such as state or street address ending noun?</p>
     <p class="answer">&emsp;&emsp;Yes, as long as you do not invalidate a potentially valid address.</p>    
-    <p>&emsp;&emsp;<b>B.2.5 R1</b>If a duplicate normal address is found should both be preserved?</p>
+    <p>&emsp;&emsp;<b>B.2.5 R1</b> If a duplicate normal address is found should both be preserved?</p>
     <p class="answer">&emsp;&emsp;If a duplicate is found it can be discarded.</p>    
 <p><b>C.</b> Use Cases</p>
   <p>&emsp;<b>C.1</b> Batch Job </p>
     <p>&emsp;&emsp;<b>C.1.1</b> What kind of scheduling interfaces does the system need in this mode?</p>
     <p class="answer">&emsp;&emsp;Yes, users should be notified of how an address was changed.</p>
-    <p>&emsp;&emsp;<b>C.1.1 R1</b>In batch mode should the system prompt for normalization resolution?</p>
+    <p>&emsp;&emsp;<b>C.1.2 R1</b>In batch mode should the system prompt for normalization resolution?</p>
     <p class="answer">&emsp;&emsp;No, users should be notified of how an address was changed.</p>    
   <p>&emsp;<b>C.2</b> Data Entry and Correction
     <p>&emsp;&emsp;<b>C.2.1</b> Do we actively notify users about the corrections we make?</p>
@@ -120,7 +121,7 @@ be handled?</p>
     <p class="answer">&emsp;&emsp;The system does not need to handle any security measures.</p>    
     <p>&emsp;&emsp;<b>D.2.2</b> Is there a performance target in terms of normalized address per second or similar that needs to be met by the system?</p>
     <p class="answer">&emsp;&emsp;The system must be able to process a 50,000 address working set.</p>    
-    <p>&emsp;&emsp;<b>D.2.2 R1</b>Does the system need to preserve the ordering of addresses?</p>
+    <p>&emsp;&emsp;<b>D.2.2 R1</b> Does the system need to preserve the ordering of addresses?</p>
     <p class="answer">&emsp;&emsp;Yes, the system needs to preserve the ordering of addresses.</p>    
   <p>&emsp;<b>D.3</b> Licensing</p>
     <p>&emsp;&emsp;<b>D.3.1</b> If this project is to be open-sourced, which license would be most appropriate given how it will be used? </p>
