@@ -8,6 +8,11 @@
     border: 1px solid black;
     border-collapse: collapse
   }
+  
+  .answer
+  {
+    font-style: italic;
+  }
   </style>
 </head>
 <body>
@@ -41,7 +46,7 @@ on 11/02/16 regarding his need for software to normalize mailing addresses.
   </tr>
   <tr>
     <td>16/02/16</td>
-    <td>First Pass at Fixing Dr. Beck's Critisms</td>
+    <td>First Pass at Fixing Dr. Beck's Criticisms</td>
     <td>Aidan Talerico</td>
   </tr>
 </table>
@@ -50,41 +55,75 @@ on 11/02/16 regarding his need for software to normalize mailing addresses.
 <p><b>A.</b> Actors</p>
   <p>&emsp;<b>A.1.</b> End Users</p>
     <p>&emsp;&emsp;<b>A.1.1</b> What human users, if any, does the system need to accommodate?</p>
+    <p class="answer">&emsp;&emsp;A data entry user and a user running the normalization process on a batch of addresses.</p>
     <p>&emsp;&emsp;<b>A.1.2</b> Will the system need to accommodate different classes of users with
 different permissions levels?</p>
+    <p class="answer">&emsp;&emsp; No, it will not need to manage permissions between the two types of users.
+    </p>
    <p>&emsp;<b>A.2</b> Coupled Systems</p>
     <p>&emsp;&emsp;<b>A.2.1</b> What external systems, if any, does the system need to interoperate with?</p>
+    <p class="answer">&emsp;&emsp; It will not need to interoperate with any external systems.
+    </p>
 <p><b>B.</b> Typical Functionality</p>
   <p>&emsp;<b>B.1</b> Workflow</p>
     <p>&emsp;&emsp;<b>B.1.1</b> How does the system receive an address to be normalized?</p>
+    <p class="answer">&emsp;&emsp;A CSV file in the batch mode and manual data entry in interactive mode.</p>
     <p>&emsp;&emsp;<b>B.1.2</b> What results need to be returned or displayed after the system has processed and normalized an address?</p>
+    <p class="answer">&emsp;&emsp;An output CSV file of the normalized addresses.</p>
     <p>&emsp;&emsp;<b>B.1.3</b> How should information about address receiving, address processing and results be communicated to human users? </p>
-        <p>&emsp;&emsp;&emsp;<b>B.1.3.1</b> If automated email, how should that email be formated and which users should receive it?</p>
+    <p class="answer">&emsp;&emsp;An output CSV file of the normalized addresses.</p>
+        <p>&emsp;&emsp;&emsp;<b>B.1.3.1</b> If automated email, how should that email be formatted and which users should receive it?</p>
+        <p class="answer">&emsp;&emsp;&emsp;The system should not use email.</p>
         <p>&emsp;&emsp;&emsp;<b>B.1.3.2</b> If the program needs a GUI, should be in the form of a web application or native application?</p>
-    <p>&emsp;&emsp;<b>B.1.4</b> Should information displayed be dependant on the class of the user, if any exist? </p>
+        <p class="answer">&emsp;&emsp;&emsp;The system should not use a web interface.</p>
+    <p>&emsp;&emsp;<b>B.1.4</b> Should information displayed be dependent on the class of the user, if any exist? </p>
+    <p class="answer">&emsp;&emsp;There are not different classes of users in the system.</p>    
       <p>&emsp;&emsp;&emsp;<b>B.1.4.1</b> If so, what which users need to see what?</p>
-  <p>&emsp;<b>B.2</b> Address Handling Specifics </p>
+        <p class="answer">&emsp;&emsp;&emsp;See above answer.</p>
+    <p>&emsp;&emsp;<b>B.1.5 R1</b>Should the output contain only normalized addresses?</p>
+    <p class="answer">&emsp;&emsp;Using multiple out files is acceptable.</p>
+    <p>&emsp;&emsp;<b>B.1.6 R1</b>Does the system need to be able to handle business addresses?</p>
+    <p class="answer">&emsp;&emsp;Yes the system must be able to process business addresses. Users will specify if an address is personal or business..</p>  
+    <p>&emsp;<b>B.2</b> Address Handling Specifics </p>
                 <p>&emsp;&emsp;<b>B.2.1</b> If an aspect of address is found to be invalid and repair is impossible, what
  should be done with the address?</p>
-<p>&emsp;&emsp;<b>B.2.2</b> If two aspects of an address such as zipcode and state are contradictory,
+     <p class="answer">&emsp;&emsp;The user should be notified and given a chance to correct it.</p>    
+<p>&emsp;&emsp;<b>B.2.2</b> If two aspects of an address such as zip code and state are contradictory,
  what should be done with the address?</p>
+     <p class="answer">&emsp;&emsp; A best attempt should made to normalize it if possible.</p>    
 <p>&emsp;&emsp;<b>B.2.3</b> If non-alphanumeric characters are found within address how should they
 be handled?</p>
+    <p class="answer">&emsp;&emsp;They should be ignored if they would affect processing.</p>    
 <p>&emsp;&emsp;<b>B.2.4</b> Is it appropriate to attempt to correct spelling errors in certain fields such as state or street address ending noun?</p>
+    <p class="answer">&emsp;&emsp;Yes, as long as you do not invalidate a potentially valid address.</p>    
+    <p>&emsp;&emsp;<b>B.2.5 R1</b>If a duplicate normal address is found should both be preserved?</p>
+    <p class="answer">&emsp;&emsp;If a duplicate is found it can be discarded.</p>    
 <p><b>C.</b> Use Cases</p>
   <p>&emsp;<b>C.1</b> Batch Job </p>
     <p>&emsp;&emsp;<b>C.1.1</b> What kind of scheduling interfaces does the system need in this mode?</p>
+    <p class="answer">&emsp;&emsp;Yes, users should be notified of how an address was changed.</p>
+    <p>&emsp;&emsp;<b>C.1.1 R1</b>In batch mode should the system prompt for normalization resolution?</p>
+    <p class="answer">&emsp;&emsp;No, users should be notified of how an address was changed.</p>    
   <p>&emsp;<b>C.2</b> Data Entry and Correction
     <p>&emsp;&emsp;<b>C.2.1</b> Do we actively notify users about the corrections we make?</p>
+    <p class="answer">&emsp;&emsp;Yes, users should be notified of how an address was changed.</p>    
     <p>&emsp;&emsp;<b>C.2.2</b> What role should the user play in handling addresses that cannot be normalized?</p>
+    <p class="answer">&emsp;&emsp;The user should be notified of addresses that can not be normalized and given a chance to correct.</p>    
 <p><b>D.</b> Non-functional</p>
   <p>&emsp;<b>D.1</b> Environment</p>
     <p>&emsp;&emsp;<b>D.1.1</b> What operating system does the system need to run on?</p>
+    <p class="answer">&emsp;&emsp;There is no preference for target operating system.</p>    
     <p>&emsp;&emsp;<b>D.1.2</b> Is it safe to assume that incoming data from other systems has been validated to have any null fields marked as such and a consistent field ordering? </p>
+    <p class="answer">&emsp;&emsp;Some fields may be empty such as zip four.</p>    
   <p>&emsp;<b>D.2</b> Constraints</p>
     <p>&emsp;&emsp;<b>D.2.1</b> Does the system need to handle security measures such as encrypting communication or authenticating users?</p>
+    <p class="answer">&emsp;&emsp;The system does not need to handle any security measures.</p>    
     <p>&emsp;&emsp;<b>D.2.2</b> Is there a performance target in terms of normalized address per second or similar that needs to be met by the system?</p>
+    <p class="answer">&emsp;&emsp;The system must be able to process a 50,000 address working set.</p>    
+    <p>&emsp;&emsp;<b>D.2.2 R1</b>Does the system need to preserve the ordering of addresses?</p>
+    <p class="answer">&emsp;&emsp;Yes, the system needs to preserve the ordering of addresses.</p>    
   <p>&emsp;<b>D.3</b> Licensing</p>
     <p>&emsp;&emsp;<b>D.3.1</b> If this project is to be open-sourced, which license would be most appropriate given how it will be used? </p>
+    <p class="answer">&emsp;&emsp;There are no restrictions on what open source license could be used.</p>    
 </body>
 </html>
