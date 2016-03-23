@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Team 1 Architecture Design Document</title>
+  <style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse
+  }
+  
+  </style>
+</head>
+<body>
+
+<h1>Address Normalizer Project Design Document</h1>
+
+<h2>Team Members</h2> 
+<ul>
+  <li>Drake Gens, Team Contact &lt;<a href="mailto:dmg3881@truman.edu">dmg3881@truman.edu</a>&gt; </li>
+  <li>Paulina Massey</li>
+
+  <li>Andrew Brogan</li>
+  <li>Aidan Talerico</li>
+  <li>Yuhao Zhang</li>
+</ul>
+
+<h2>Document Revision History</h2>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Revision Reason</th>
+    <th>Author</th>
+  </tr>
+  <tr>
+    <td>23/03/16</td>
+    <td>First Draft</td>
+    <td>Aidan Talerico</td>
+  </tr>
+</table>
+
+<h2>Purpose</h2>
+<p>
+The purpose of this document is to layout the architectural design of the addnorm address normalizing system project. It also includes use cases to describe typical functionality of the system, and lays out a class diagram for technical implementation in the Java programming language. 
+</p>
+<p>Note, (R.X.X.X) notes refer to numbered requirements.</p>
+
+<h2>A. Architecture Overview</h2>
+<p>&emsp;<b>A.1</b> We have elected to use the main and subroutine architecture. </p>
+<p>&emsp;<b>A.2</b> This architecture lends itself in particular to transformational systems, in which the system converts some input to an output and there is little to no interaction between the system and the actor. (R.A.6, R.A.9)</p>
+<p>&emsp;<b>A.3</b> Converting an input to an output involves a hierarchy of reasonings.</p>
+<p>&emsp;<b>A.4</b> In the main and subroutine architecture, there is typically a single thread of control and each component in the hierarchy gets this control (optionally along with some data) from its parent and passes it along to its children. </p>
+<p>&emsp;<b>A.5</b> All team members have a knowledge of procedural programming, which this architecture lends itself to. </p>
+<p>&emsp;<b>A.6</b> It is easy to achieve modularity in this architecture by separating functionality into subroutines. </p>
+<p>&emsp;<b>A.7</b> The system is stateless, another feature of transformational systems utilizing the main and subroutine architecture.</p>
+
+<h2>B. Programming Language Justification</h2>
+<p>&emsp;<b>B.1</b> We have selected Java because all team members are fluent in this language. <p>
+<p>&emsp;<b>B.2</b> The language has a robust GUI development toolkit. (R.B.5) <p>
+<p>&emsp;<b>B.3</b> The language allows for simple unit testing. <p>
+<p>&emsp;<b>B.4</b> Lastly, Java is cross platform and portable. (R.B.1)</p>
+
+<h2>C. Use Cases</h2>
+<p>&emsp;<b>C.1</b> Process Batch (R.A.2, R.A.7, R.B.2, R.B.6)</p>
+  <p>&emsp;&emsp;<b>C.1.1</b> The user indicates a file to be processed.</p>
+  <p>&emsp;&emsp;<b>C.1.2</b> The system normalizes addresses and displays status to the user while they are waiting for the program to terminate.</p>
+  <p>&emsp;&emsp;<b>C.1.3</b> The system saves results to output files for the user to access.</p>
+  <p>&emsp;&emsp;<b>C.1.4</b> The system displays the location of the output files.</p>
+  <p>&emsp;&emsp;<b>C.1.5</b> The user opens the output files. </p>
+  <p>&emsp;&emsp;<b>C.1.6</b> The user views the file of normalized addresses, and a file of addresses that were not able to be normalized.</p>
+<p>&emsp;<b>C.2</b> Enter Single Address (R.A.1, R.A.5, R.B.3, R.B.5)</p>
+  <p>&emsp;&emsp;<b>C.2.1</b> The user launches the application in order to enter a single address to be normalized.</p>
+  <p>&emsp;&emsp;<b>C.2.2</b> The user enters the data into the appropriate fields.</p>
+  <p>&emsp;&emsp;<b>C.2.3</b> The user specifies whether the address is a personal, business or PO box address.</p>
+  <p>&emsp;&emsp;<b>C.2.4</b> The user submits the entered data.</p>
+  <p>&emsp;&emsp;<b>C.2.5</b> The system continues with processing or indicates that there has been an error in data entry, allowing for resubmission.</p>
+  <p>&emsp;&emsp;<b>C.2.6</b> The result of the normalization is displayed to the user in the output field.</p>
+
+<h2>D. Class Design </h2>
+<img src="design.png" alt="UML Class Diagram">
+<p>&emsp;<b>D.1</b> The addnorm system has two main classes, AddNormBatch and AddNormSingle which correspond to the batch use case and single address use case, respectively. </p>
+<p>&emsp;<b>D.2</b> The Address abstract class encapsulates the common attributes of addresses and its subclasses: PersonalAddress, BusinessAddress and POBoxAddress. </p>
+<p>&emsp;<b>D.3</b> These subclasses address the particulars of those types of addresses. </p>
+<p>&emsp;<b>D.4</b> The Normalizer interface is consumed by AddNormBatch and AddNormSingle to attempt normalization of addresses. </p>
+<p>&emsp;<b>D.5</b> The implementations of Normalizer correspond to the subclasses of Address. </p>
+<p>&emsp;<b>D.6</b> Additionally, AddNormBatch uses the CSVReader and CSVWriter classes which facilitate its reading and writing of input and output files.</p>
+
+
+<h2>E. Modularity</h2>
+<p>&emsp;<b>E.1</b> The architecture style that we selected considers modularity in its structure. </p>
+  <p>&emsp;&emsp;<b>E.1.1</b> The main and subroutine style is modular in nature in that we can separate different functionalities into subroutines. </p>
+  <p>&emsp;&emsp;<b>E.1.2</b> For instance, if we were to add a capability to normalize international addresses, then we could easily add an international address class(inheriting from the abstract class Address) and also create a new international normalizer, implementing the normalizer interface. </p>
+  <p>&emsp;&emsp;<b>E.1.3</b> Another example is that if we wanted the system to talk to a database instead of a CSV file, we could add a database reader class, instead of a CSV reader class.</p>
+<p>&emsp;<b>E.2</b> Each class in our system only has one responsibility. The object abstractions form components that provide black-box services and other components that request those services. </p>
+  <p>&emsp;&emsp;<b>E.2.1</b> For example, the Address class only contains the fields of an address but does not attempt to normalize those addresses, leaving that responsibility to the classes implementing the Normalizer interface.</p>
+</body>
+</html>
