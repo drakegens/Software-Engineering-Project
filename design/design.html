@@ -40,9 +40,9 @@
 
 <h2>Purpose</h2>
 <p>
-The purpose of this document is to layout the architectural design of the addnorm address normalizing system project. It also includes use cases to describe typical functionality of the system, and lays out a class diagram for technical implementation in the Java programming language. 
+The purpose of this document is to lay out the architectural design of the addnorm address normalizing system project. It also includes use cases to describe typical functionality of the system, and lays out a class diagram for technical implementation in the Java programming language. 
 </p>
-<p>Note, (R.X.X.X) notes refer to numbered requirements.</p>
+<p>Note, (R.X.X.X) notes refer to numbered requirements from the Address Normalizer Requirements Document.</p>
 
 <h2>A. Architecture Overview</h2>
 <p>&emsp;<b>A.1</b> We have elected to use the main and subroutine architecture. </p>
@@ -57,7 +57,7 @@ The purpose of this document is to layout the architectural design of the addnor
 <p>&emsp;<b>B.1</b> We have selected Java because all team members are fluent in this language. <p>
 <p>&emsp;<b>B.2</b> The language has a robust GUI development toolkit. (R.B.5) <p>
 <p>&emsp;<b>B.3</b> The language allows for simple unit testing. <p>
-<p>&emsp;<b>B.4</b> Lastly, Java is cross platform and portable. (R.B.1)</p>
+<p>&emsp;<b>B.4</b> Java is cross platform and portable. (R.B.1)</p>
 
 <h2>C. Use Cases</h2>
 <p>&emsp;<b>C.1</b> Process Batch (R.A.2, R.A.7, R.B.2, R.B.6)</p>
@@ -88,9 +88,9 @@ The purpose of this document is to layout the architectural design of the addnor
 <h2>E. Modularity</h2>
 <p>&emsp;<b>E.1</b> The architecture style that we selected considers modularity in its structure. </p>
   <p>&emsp;&emsp;<b>E.1.1</b> The main and subroutine style is modular in nature in that we can separate different functionalities into subroutines. </p>
-  <p>&emsp;&emsp;<b>E.1.2</b> For instance, if we were to add a capability to normalize international addresses, then we could easily add an international address class(inheriting from the abstract class Address) and also create a new international normalizer, implementing the normalizer interface. </p>
-  <p>&emsp;&emsp;<b>E.1.3</b> Another example is that if we wanted the system to talk to a database instead of a CSV file, we could add a database reader class, instead of a CSV reader class.</p>
+  <p>&emsp;&emsp;<b>E.1.2</b> If we were to add a capability to normalize international addresses, then we could easily add an international address class(inheriting from the abstract class Address) and also create a new international normalizer, implementing the normalizer interface. </p>
+  <p>&emsp;&emsp;<b>E.1.3</b> If we wanted the system to talk to a database instead of a CSV file, we could add a database reader class, instead of a CSV reader class.</p>
 <p>&emsp;<b>E.2</b> Each class in our system only has one responsibility. The object abstractions form components that provide black-box services and other components that request those services. </p>
-  <p>&emsp;&emsp;<b>E.2.1</b> For example, the Address class only contains the fields of an address but does not attempt to normalize those addresses, leaving that responsibility to the classes implementing the Normalizer interface.</p>
+  <p>&emsp;&emsp;<b>E.2.1</b> The Address class only contains the fields of an address but does not attempt to normalize those addresses, leaving that responsibility to the classes implementing the Normalizer interface.</p>
 </body>
 </html>
