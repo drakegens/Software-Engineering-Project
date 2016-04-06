@@ -32,6 +32,11 @@
     <th>Author</th>
   </tr>
   <tr>
+    <td>05/04/16</td>
+    <td>Class Diagram Revision</td>
+    <td>Drake Gens</td>
+  </tr>
+  <tr>
     <td>29/03/16</td>
     <td>First Revision</td>
     <td>Drake Gens</td>
@@ -85,18 +90,16 @@ The purpose of this document is to lay out the architectural design of the addno
 <img src="Class_Diagram.png" alt="UML Class Diagram">
 <p>&emsp;<b>D.1</b> The addnorm system has two main classes, AddNormBatch and AddNormSingle which correspond to the batch use case and single address use case, respectively. </p>
 <p>&emsp;<b>D.2</b> The Address abstract class encapsulates the common attributes of addresses and its subclasses: PersonalAddress, BusinessAddress and POBoxAddress. </p>
-<p>&emsp;<b>D.3</b> These subclasses address the particulars of those types of addresses. </p>
-<p>&emsp;<b>D.4</b> The Normalizer interface is consumed by AddNormBatch and AddNormSingle to attempt normalization of addresses. </p>
-<p>&emsp;<b>D.5</b> The implementations of Normalizer correspond to the subclasses of Address. </p>
-<p>&emsp;<b>D.6</b> Additionally, AddNormBatch uses the CSVReader and CSVWriter classes which facilitate its reading and writing of input and output files.</p>
+<p>&emsp;<b>D.3</b> The Address abstract class defines a method normalize, which attempts a normalization of the address and flags the object appropriately</p>
+<p>&emsp;<b>D.4</b> The Address abstract class will have a toString method.</p>
+<p>&emsp;<b>D.5</b> Additionally, AddNormBatch uses the CSVReader and CSVWriter classes which facilitate its reading and writing of input and output files.</p>
 
 
 <h2>E. Modularity</h2>
 <p>&emsp;<b>E.1</b> The architecture style that we selected considers modularity in its structure. </p>
   <p>&emsp;&emsp;<b>E.1.1</b> The main and subroutine style is modular in nature in that we can separate different functionalities into subroutines. </p>
-  <p>&emsp;&emsp;<b>E.1.2</b> If we were to add a capability to normalize international addresses, then we could easily add an international address class(inheriting from the abstract class Address) and also create a new international normalizer, implementing the normalizer interface. </p>
+  <p>&emsp;&emsp;<b>E.1.2</b> If we were to add a capability to normalize international addresses, then we could easily add an international address class(inheriting from the abstract class Address). </p>
   <p>&emsp;&emsp;<b>E.1.3</b> If we wanted the system to talk to a database instead of a CSV file, we could add a database reader class, instead of a CSV reader class.</p>
 <p>&emsp;<b>E.2</b> Each class in our system only has one responsibility. The object abstractions form components that provide black-box services and other components that request those services. </p>
-  <p>&emsp;&emsp;<b>E.2.1</b> The Address class only contains the fields of an address but does not attempt to normalize those addresses, leaving that responsibility to the classes implementing the Normalizer interface.</p>
 </body>
 </html>
