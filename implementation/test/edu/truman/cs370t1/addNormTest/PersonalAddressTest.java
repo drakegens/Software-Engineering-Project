@@ -12,17 +12,22 @@ public class PersonalAddressTest {
 	
 	Address address;
 	Address address2;
+	Address address3;
 
 	@Before
 	public void setUp() throws Exception {
-		address = new PersonalAddress("1234","12345");
-		address2 = new PersonalAddress("ABCD","ABCDE");
+		address = new PersonalAddress("1234","12345", "AK");
+		address2 = new PersonalAddress("1234","12345", "Alabama");
+		address3 = new PersonalAddress("ABCD","ABCDE", "Alama");
+
 	}
 
 	@Test
 	public void testNormalize() {
 		assertTrue(address.normalize());
-		assertFalse(address2.normalize());
+		assertTrue(address2.normalize());
+		assertFalse(address3.normalize());
+		
 	}
 
 }
