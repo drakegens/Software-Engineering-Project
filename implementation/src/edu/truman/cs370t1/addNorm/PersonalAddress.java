@@ -2,7 +2,6 @@ package edu.truman.cs370t1.addNorm;
 
 public class PersonalAddress extends Address {
 	private String state;
-	private States stateList;
 	
 	public PersonalAddress(){
 		super();
@@ -12,9 +11,7 @@ public class PersonalAddress extends Address {
 		super();
 		this.zip4 = zip4;
 		this.zip5 = zip5;
-		this.state = state;
-		this.stateList = new States();
-		
+		this.state = state;		
 	}
 
 	@Override
@@ -27,6 +24,7 @@ public class PersonalAddress extends Address {
 				return false;
 			}
 		}
+		
 		if(zip5.length() != 5){
 			return false;
 		}
@@ -35,15 +33,15 @@ public class PersonalAddress extends Address {
 				return false;
 			}
 		}
-		if(stateList.getAbbreviation(state) != null){
-			state = stateList.getAbbreviation(state);
+		
+		if(States.getAbbreviation(state) != null){
+			state = States.getAbbreviation(state);
 		}
 		else{
-			if(!stateList.isAbbreviation(state)){
+			if(!States.isAbbreviation(state)){
 				return false;
 			}
 		}
-		
 		
 		return true;
 	}
