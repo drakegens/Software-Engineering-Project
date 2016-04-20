@@ -2,12 +2,12 @@ package edu.truman.cs370t1.addNorm;
 
 public class CSVReader {
 
-	private String full = "123 Normal St, Kirksville, MO, 63501, 1234";
+	private String full = "123 Normal St	Kirksville	MO	63501	1234";
 	
 	public Address parse() {
 	Address address = new PersonalAddress();
 	
-	String[] addressarray = full.split(", ");
+	String[] addressarray = full.split("\t");
 	
 	address.setLine1(addressarray[0]);
 	
