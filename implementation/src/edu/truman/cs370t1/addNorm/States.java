@@ -6,22 +6,18 @@ import java.util.Map;
 public class States {
 	
 	private static Map<String, String> stateToAbbreviation = null;
-	
-	public States(){
-	}
+		
 	
 	public static String getAbbreviation(String fullname){
-		if (stateToAbbreviation == null) {
-			populateStates();
-		}
+		populateStates();
+
 		return stateToAbbreviation.get(fullname);
 	}
 	
 	
 	public static boolean isAbbreviation(String possibleAbbre){
-		if (stateToAbbreviation == null) {
-			populateStates();
-		}
+		populateStates();
+		
 		for(String value : stateToAbbreviation.values()){
 			if(value.equals(possibleAbbre)){
 				return true;
@@ -31,6 +27,9 @@ public class States {
 	}
 
 	private static void populateStates() {
+		if(stateToAbbreviation != null){
+			return;
+		}
 		stateToAbbreviation = new HashMap<>();
 		stateToAbbreviation.put("Alabama", "AL");
 		stateToAbbreviation.put("Alaska", "AK");
@@ -82,5 +81,6 @@ public class States {
 		stateToAbbreviation.put("West Virginia", "WV");
 		stateToAbbreviation.put("Wisconsin", "WI");
 		stateToAbbreviation.put("Wyoming", "WY");
+		
 	}	
 }
