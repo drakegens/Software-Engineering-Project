@@ -33,9 +33,11 @@ public class CSVReaderTest {
 		
 		assertEquals("63501", add.getZip5());
 		
-		assertEquals("1234", add.getZip4());
+		assertEquals(null, add.getZip4());
 		
 		
 	}
+	
+	
 
 }
