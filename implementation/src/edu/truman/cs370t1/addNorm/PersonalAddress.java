@@ -24,9 +24,17 @@ public class PersonalAddress extends Address {
 		if(abbreviation != null){
 			line1Fields[line1Fields.length - 1] = abbreviation;
 		}
+		else{
+			abbreviation = Streets.getAbbreviation(line1Fields[line1Fields.length - 2]);
+			if(abbreviation != null){
+				line1Fields[line1Fields.length - 2] = abbreviation;
+			}			
+			line1Fields[line1Fields.length - 1] = Streets.getDirectionAbbreviation(line1Fields[line1Fields.length - 1]);
+		}
 		for(int i = 0; i < 2 && i < line1Fields.length; i++){
 			line1Fields[i] = Streets.getDirectionAbbreviation(line1Fields[i]);
 		}
+		
 		
 		this.line1 = String.join(" ", line1Fields);
 
