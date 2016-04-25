@@ -16,9 +16,9 @@ public class PersonalAddressTest {
 
 	@Before
 	public void setUp() throws Exception {
-		address = new PersonalAddress("1234","12345", "AK");
-		address2 = new PersonalAddress("1234","12345", "Alabama");
-		address3 = new PersonalAddress("ABCD","ABCDE", "Alama");
+		address = new PersonalAddress("1234","12345", "AK", "kirksville");
+		address2 = new PersonalAddress("1234","12345", "Alabama", "St. Louis");
+		address3 = new PersonalAddress("ABCD","ABCDE", "Alama", "kansas city");
 
 	}
 

@@ -7,15 +7,18 @@ public class PersonalAddress extends Address {
 		super();
 	}
 
-	public PersonalAddress(String zip4, String zip5, String state) {
+	public PersonalAddress(String zip4, String zip5, String state, String city) {
 		super();
 		this.zip4 = zip4;
 		this.zip5 = zip5;
-		this.state = state;		
+		this.state = state;
+		this.city = city;
 	}
 
 	@Override
 	public boolean normalize() {
+		this.city = this.city.toUpperCase();
+		
 		if(zip4.length() != 4){
 			return false;
 		}
