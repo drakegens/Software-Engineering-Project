@@ -1,24 +1,35 @@
 package edu.truman.cs370t1.addNorm;
-
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class CSVReader {
 
-	private int streetPos = 0;
-	private int cityPos = 1;
-	private int statePos = 2;
-	private int zip5Pos = 3;
-	private int zip4Pos = 4;
+	public CSVReader() {
+		super();
+		//this.filename = filename;
+		//createInputFile(this.filename);
 
-	private String full = "123 Normal St	Kirksville	MO	63501	1234";
+	}
 
-	private String noZip4 = "123 Normal St	Kirksville	MO	63501	";
-	
-	private String filename = "dataset_2016_04_14";
+	public FileReader createInputFile(File file) {
 
-	FileReader in = new FileReader(filename);
-	
-	
+		//File file = new File("");
+		try {
+		FileReader in = new FileReader(file);
+		//parse(in);
+		}
+		  catch (FileNotFoundException e) {
+		 System.out.print("Incorrect File Name");
+		
+		  }
+
+		 finally {
+		// do something
+			 }
+	}
+
 	public Address parse() {
 
 		Address address = new PersonalAddress();
@@ -35,4 +46,15 @@ public class CSVReader {
 
 	}
 
+	private int streetPos = 0;
+	private int cityPos = 1;
+	private int statePos = 2;
+	private int zip5Pos = 3;
+	private int zip4Pos = 4;
+
+	private String full = "123 Normal St	Kirksville	MO	63501	1234";
+
+	private String noZip4 = "123 Normal St	Kirksville	MO	63501	";
+
+	private String filename;// = "dataset_2016_04_14.txt";
 }
