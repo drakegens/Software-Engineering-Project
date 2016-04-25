@@ -13,7 +13,7 @@ public class CSVReader {
 
 	}
 
-	public FileReader createInputFile(File file) {
+	public void createInputFile(File file) {
 
 		//File file = new File("");
 		try {
