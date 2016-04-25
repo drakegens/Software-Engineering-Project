@@ -1,5 +1,7 @@
 package edu.truman.cs370t1.addNorm;
 
+import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
+
 public class PersonalAddress extends Address {
 	private String state;
 	
@@ -16,16 +18,30 @@ public class PersonalAddress extends Address {
 		this.line1 = line1.toUpperCase();
 	}
 		
-
-	@Override
-	public boolean normalize() {
+	
+	private void normalizeLine1(){
 		String[] line1Fields = line1.split(" ");
 		String abbreviation = Streets.getAbbreviation(line1Fields[line1Fields.length - 1]);
 		if(abbreviation != null){
 			line1Fields[line1Fields.length - 1] = abbreviation;
 			this.line1 = String.join(" ", line1Fields);
+		}		
+	}
+
+	private boolean normalizeState(){
+		if(States.getAbbreviation(state) != null){
+			state = States.getAbbreviation(state);
+		}
+		else{
+			if(!States.isAbbreviation(state)){
+				return false;
+			}
 		}
 		
+		return true;
+	}
+	
+	private boolean normalizeZip(){
 		if(zip4.length() != 4){
 			return false;
 		}
@@ -43,17 +59,21 @@ public class PersonalAddress extends Address {
 				return false;
 			}
 		}
-		
-		if(States.getAbbreviation(state) != null){
-			state = States.getAbbreviation(state);
-		}
-		else{
-			if(!States.isAbbreviation(state)){
-				return false;
-			}
-		}
-		
 		return true;
+	}
+	
+	
+	@Override
+	public boolean normalize() {
+		normalizeLine1();
+		
+		if(normalizeZip() == false){
+			return false;
+		}
+		if(normalizeState() == false){
+			return false;
+		}
+		return true;		
 	}
 
 }
