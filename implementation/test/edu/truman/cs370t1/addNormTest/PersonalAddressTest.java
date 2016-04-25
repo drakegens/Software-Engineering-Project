@@ -16,9 +16,9 @@ public class PersonalAddressTest {
 
 	@Before
 	public void setUp() throws Exception {
-		address = new PersonalAddress("1234","12345", "AK", "kirksville", "123 First Alley");
-		address2 = new PersonalAddress("1234","12345", "Alabama", "St. Louis", "234 First ALLEE");
-		address3 = new PersonalAddress("ABCD","ABCDE", "Alama", "kansas city", "234 First Allee");
+		address = new PersonalAddress("1234","12345", "AK", "kirksville", "123 Southwest First Alley");
+		address2 = new PersonalAddress("1234","12345", "Alabama", "St. Louis", "south First ALLEE");
+		address3 = new PersonalAddress("ABCD","ABCDE", "Alama", "kansas city", "NORTh First Allee");
 
 	}
 
@@ -27,7 +27,9 @@ public class PersonalAddressTest {
 		assertTrue(address.normalize());
 		assertTrue(address2.normalize());
 		assertFalse(address3.normalize());
-		assertEquals("123 FIRST ALY", address.getLine1());
+		assertEquals("123 SW FIRST ALY", address.getLine1());
+		assertEquals("S FIRST ALY", address2.getLine1());
+		
 		
 	}
 

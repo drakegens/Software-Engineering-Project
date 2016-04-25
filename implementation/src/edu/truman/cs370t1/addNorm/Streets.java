@@ -14,6 +14,33 @@ public class Streets {
 		return streetLineItems.get(streetLine);
 	}
 	
+	public static String getDirectionAbbreviation(String s){
+		if(s.equals("NORTH")){
+			return "N";
+		}
+		else if(s.equals("SOUTH")){
+			return "S";
+		}		
+		else if(s.equals("EAST")){
+			return "E";
+		}
+		else if(s.equals("WEST")){
+			return "W";
+		}
+		else if(s.equals("NORTHEAST")){
+			return "NE";
+		}
+		else if(s.equals("NORTHWEST")){
+			return "NW";
+		}
+		else if(s.equals("SOUTHEAST")){
+			return "SE";
+		}		
+		else if(s.equals("SOUTHWEST")){
+			return "SW";
+		}
+		return s;
+	}
 	
 
 	private static void populateStreetItems() {

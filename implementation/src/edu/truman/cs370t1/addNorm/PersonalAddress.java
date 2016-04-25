@@ -1,6 +1,5 @@
 package edu.truman.cs370t1.addNorm;
 
-import javax.xml.bind.annotation.adapters.NormalizedStringAdapter;
 
 public class PersonalAddress extends Address {
 	private String state;
@@ -24,8 +23,13 @@ public class PersonalAddress extends Address {
 		String abbreviation = Streets.getAbbreviation(line1Fields[line1Fields.length - 1]);
 		if(abbreviation != null){
 			line1Fields[line1Fields.length - 1] = abbreviation;
-			this.line1 = String.join(" ", line1Fields);
-		}		
+		}
+		for(int i = 0; i < 2 && i < line1Fields.length; i++){
+			line1Fields[i] = Streets.getDirectionAbbreviation(line1Fields[i]);
+		}
+		
+		this.line1 = String.join(" ", line1Fields);
+
 	}
 
 	private boolean normalizeState(){
@@ -45,16 +49,21 @@ public class PersonalAddress extends Address {
 		if(zip4.length() != 4){
 			return false;
 		}
-		for(char character : zip4.toCharArray()){
-			if(!Character.isDigit(character)){
-				return false;
-			}
+		if(allNumbers(zip4) == false){
+			return false;
 		}
 		
 		if(zip5.length() != 5){
 			return false;
 		}
-		for(char character : zip5.toCharArray()){
+		if(allNumbers(zip5) == false){
+			return false;
+		}
+		return true;
+	}
+	
+	private boolean allNumbers(String s){
+		for(char character : s.toCharArray()){
 			if(!Character.isDigit(character)){
 				return false;
 			}
