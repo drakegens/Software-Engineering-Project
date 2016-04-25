@@ -7,17 +7,24 @@ public class PersonalAddress extends Address {
 		super();
 	}
 
-	public PersonalAddress(String zip4, String zip5, String state, String city) {
+	public PersonalAddress(String zip4, String zip5, String state, String city, String line1) {
 		super();
 		this.zip4 = zip4;
 		this.zip5 = zip5;
 		this.state = state;
-		this.city = city;
+		this.city = city.toUpperCase();
+		this.line1 = line1.toUpperCase();
 	}
+		
 
 	@Override
 	public boolean normalize() {
-		this.city = this.city.toUpperCase();
+		String[] line1Fields = line1.split(" ");
+		String abbreviation = Streets.getAbbreviation(line1Fields[line1Fields.length - 1]);
+		if(abbreviation != null){
+			line1Fields[line1Fields.length - 1] = abbreviation;
+			this.line1 = String.join(" ", line1Fields);
+		}
 		
 		if(zip4.length() != 4){
 			return false;
