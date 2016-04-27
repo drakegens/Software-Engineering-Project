@@ -9,9 +9,9 @@ import edu.truman.cs370t1.addNorm.Streets;
 public class StreetsTest {
 
 	@Test
-	public void testGetAbbreviation() {
-		assertEquals("ALY", Streets.getAbbreviation("ALLEE"));
-		assertEquals("WLS", Streets.getAbbreviation("WELLS"));
+	public void testGetStreetSuffixAbbreviation() {
+		assertEquals("ALY", Streets.getStreetSuffixAbbreviation("ALLEE"));
+		assertEquals("WLS", Streets.getStreetSuffixAbbreviation("WELLS"));
 	}
 
 	@Test

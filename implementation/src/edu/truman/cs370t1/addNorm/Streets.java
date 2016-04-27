@@ -8,37 +8,37 @@ public class Streets {
 	private static Map<String, String> streetSuffixAbbreviations = null;
 		
 	
-	public static String getAbbreviation(String streetLine){
+	public static String getStreetSuffixAbbreviation(String streetSuffix){
 		populateStreetSuffixAbbreviations();
-		return streetSuffixAbbreviations.get(streetLine);
+		return streetSuffixAbbreviations.get(streetSuffix);
 	}
 	
-	public static String getDirectionAbbreviation(String s){
-		if(s.equals("NORTH")){
+	public static String getDirectionAbbreviation(String direction){
+		if(direction.equals("NORTH")){
 			return "N";
 		}
-		else if(s.equals("SOUTH")){
+		else if(direction.equals("SOUTH")){
 			return "S";
 		}		
-		else if(s.equals("EAST")){
+		else if(direction.equals("EAST")){
 			return "E";
 		}
-		else if(s.equals("WEST")){
+		else if(direction.equals("WEST")){
 			return "W";
 		}
-		else if(s.equals("NORTHEAST")){
+		else if(direction.equals("NORTHEAST")){
 			return "NE";
 		}
-		else if(s.equals("NORTHWEST")){
+		else if(direction.equals("NORTHWEST")){
 			return "NW";
 		}
-		else if(s.equals("SOUTHEAST")){
+		else if(direction.equals("SOUTHEAST")){
 			return "SE";
 		}		
-		else if(s.equals("SOUTHWEST")){
+		else if(direction.equals("SOUTHWEST")){
 			return "SW";
 		}
-		return s;
+		return direction;
 	}
 	
 

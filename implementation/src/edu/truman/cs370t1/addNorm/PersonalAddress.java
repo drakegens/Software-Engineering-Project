@@ -20,14 +20,14 @@ public class PersonalAddress extends Address {
 	
 	private void normalizeLine1(){
 		String[] line1Fields = line1.split(" ");
-		String abbreviation = Streets.getAbbreviation(line1Fields[line1Fields.length - 1]);
-		if(abbreviation != null){
-			line1Fields[line1Fields.length - 1] = abbreviation;
+		String suffix = Streets.getStreetSuffixAbbreviation(line1Fields[line1Fields.length - 1]);
+		if(suffix != null){
+			line1Fields[line1Fields.length - 1] = suffix;
 		}
 		else{
-			abbreviation = Streets.getAbbreviation(line1Fields[line1Fields.length - 2]);
-			if(abbreviation != null){
-				line1Fields[line1Fields.length - 2] = abbreviation;
+			suffix = Streets.getStreetSuffixAbbreviation(line1Fields[line1Fields.length - 2]);
+			if(suffix != null){
+				line1Fields[line1Fields.length - 2] = suffix;
 			}			
 			line1Fields[line1Fields.length - 1] = Streets.getDirectionAbbreviation(line1Fields[line1Fields.length - 1]);
 		}
@@ -35,9 +35,7 @@ public class PersonalAddress extends Address {
 			line1Fields[i] = Streets.getDirectionAbbreviation(line1Fields[i]);
 		}
 		
-		
 		this.line1 = String.join(" ", line1Fields);
-
 	}
 
 	private boolean normalizeState(){
@@ -53,7 +51,17 @@ public class PersonalAddress extends Address {
 		return true;
 	}
 	
-	private boolean normalizeZip(){
+	private boolean normalizeZip5(){
+		if(zip5.length() != 5){
+			return false;
+		}
+		if(allNumbers(zip5) == false){
+			return false;
+		}
+		return true;
+	}
+	
+	private boolean normalizeZip4(){
 		if(zip4.length() != 4){
 			return false;
 		}
@@ -61,12 +69,6 @@ public class PersonalAddress extends Address {
 			return false;
 		}
 		
-		if(zip5.length() != 5){
-			return false;
-		}
-		if(allNumbers(zip5) == false){
-			return false;
-		}
 		return true;
 	}
 	
@@ -79,12 +81,14 @@ public class PersonalAddress extends Address {
 		return true;
 	}
 	
-	
 	@Override
 	public boolean normalize() {
 		normalizeLine1();
 		
-		if(normalizeZip() == false){
+		if(normalizeZip4() == false){
+			return false;
+		}
+		if(normalizeZip5() == false){
 			return false;
 		}
 		if(normalizeState() == false){
