@@ -9,8 +9,17 @@ protected String zip4;
 protected String line1;
 protected String flag;
 protected String city;
+protected String error;
+
+public String getError() {
+	return error;
+}
 
 
+
+public void setError(String error) {
+	this.error = error;
+}
 	
 	public String getCity() {
 	return city;
