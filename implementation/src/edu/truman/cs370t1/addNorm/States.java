@@ -7,17 +7,24 @@ public class States {
 	
 	private static Map<String, String> stateToAbbreviation = null;
 		
-	
+	/**
+	 * Returns the state abbreviation for the given string 
+	 * if applicable.
+	 * @param fullname the string to retrieve an abbreviation for
+	 * @return the abbreviation if possible, null otherwise
+	 */
 	public static String getAbbreviation(String fullname){
 		populateStates();
-
 		return stateToAbbreviation.get(fullname);
 	}
 	
-	
+	/**
+	 * Determines if a given string is a state abbreviation.
+	 * @param possibleAbbre a string that may be an abbreviation
+	 * @return true if the string is a state abbreviation, false otherwise
+	 */
 	public static boolean isAbbreviation(String possibleAbbre){
 		populateStates();
-		
 		for(String value : stateToAbbreviation.values()){
 			if(value.equals(possibleAbbre)){
 				return true;
@@ -25,7 +32,11 @@ public class States {
 		}
 		return false;
 	}
-
+	
+	/**
+	 * Populates the state abbreviation hashmap if it has not 
+	 * already been populated.
+	 */
 	private static void populateStates() {
 		if(stateToAbbreviation != null){
 			return;
@@ -81,6 +92,12 @@ public class States {
 		stateToAbbreviation.put("West Virginia", "WV");
 		stateToAbbreviation.put("Wisconsin", "WI");
 		stateToAbbreviation.put("Wyoming", "WY");
-		
+		stateToAbbreviation.put("Virgin Islands", "VI");
+		stateToAbbreviation.put("Palau ", "PW");
+		stateToAbbreviation.put("Puerto Rico ", "PR");
+		stateToAbbreviation.put("Northern Marianas", "MP");
+		stateToAbbreviation.put("Micronesia", "FM");
+		stateToAbbreviation.put("District of Columbia", "DC");
+		stateToAbbreviation.put("American Samoa", "AS");
 	}	
 }
