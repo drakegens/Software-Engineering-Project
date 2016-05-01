@@ -29,7 +29,7 @@ public class PersonalAddress extends Address {
 			return true;
 		}
 		else if(streetFieldLength >= 2 && 
-				Streets.isLine2Abbreviation(this.line1.split(" ")[streetFieldLength - 2])){
+				Streets.isDesignatorAbbreviation(this.line1.split(" ")[streetFieldLength - 2])){
 			String newline1 = "";
 			for(int i = 0; i < streetFieldLength - 2; i++){
 				newline1 += this.line1.split(" ")[i] + " "; 

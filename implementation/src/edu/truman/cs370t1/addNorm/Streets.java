@@ -6,13 +6,14 @@ import java.util.Map;
 public class Streets {
 	
 	private static Map<String, String> streetSuffixAbbreviations = null;
-		
+	private static Map<String, String> designatorAbbreviations = null;
 	
-	public static String getStreetSuffixAbbreviation(String streetSuffix){
-		populateStreetSuffixAbbreviations();
-		return streetSuffixAbbreviations.get(streetSuffix);
-	}
-	
+	/**
+	 * For a given direction in all capital letters, this function returns 
+	 * the standard abbreviation if applicable.
+	 * @param direction the direction to retrieve the abbreviation of
+	 * @return the direction's abbreviation or the given string if it is not one 
+	 */
 	public static String getDirectionAbbreviation(String direction){
 		if(direction.equals("NORTH")){
 			return "N";
@@ -41,7 +42,67 @@ public class Streets {
 		return direction;
 	}
 	
+	/**
+	 * Determines whether a given string is a standard secondary 
+	 * address unit desiginator abbreviation.
+	 * @param possible_designator the string to be checked
+	 * @return true if the string is a designator, false otherwise
+	 */
+	
+	public static boolean isDesignatorAbbreviation(String possible_designator) {
+		populateDesignatorAbbreviations();
+		for(String value : designatorAbbreviations.values()){
+			if(value.equals(possible_designator)){
+				return true;
+			}
+		}
+		return false;
+	}	
+	
+	/**
+	 * Returns the standard secondary address unit designator for a given 
+	 * string if applicable. 
+	 * @param designator the string to retrieve an abbreviation for
+	 * @return the abbreviated designator if possible, null otherwise
+	 */
+	public static String getDesignatorAbbreviation(String designator) {
+		populateDesignatorAbbreviations();
 
+		return designatorAbbreviations.get(designator);
+	}	
+	
+	/**
+	 * Returns the street abbreviated street suffix for the given string 
+	 * if applicable.
+	 * @param streetSuffix the string to retrieve an abbreviation for
+	 * @return the abbreviated suffix if possible, null otherwise
+	 */
+	public static String getStreetSuffixAbbreviation(String streetSuffix){
+		populateStreetSuffixAbbreviations();
+		return streetSuffixAbbreviations.get(streetSuffix);
+	}
+	
+	/**
+	 * Populates the secondary unit abbreviation hashmap if it has not 
+	 * already been populated.
+	 */
+	private static void populateDesignatorAbbreviations() {
+		if(streetSuffixAbbreviations != null){
+			return;
+		}
+		designatorAbbreviations = new HashMap<>();
+		designatorAbbreviations.put("BUILDING", "BLDG");
+		designatorAbbreviations.put("APARTMENT", "APT");
+		designatorAbbreviations.put("FLOOR", "FL");
+		designatorAbbreviations.put("SUITE", "STE");
+		designatorAbbreviations.put("ROOM", "RM");
+		designatorAbbreviations.put("DEPARTMENT", "DEPT");
+	}
+	
+	/**
+	 * Populates the street suffix abbreviation hashmap if it has not 
+	 * already been populated.
+	 */
 	private static void populateStreetSuffixAbbreviations() {
 		if(streetSuffixAbbreviations != null){
 			return;
@@ -399,12 +460,4 @@ public class Streets {
 		streetSuffixAbbreviations.put("WELL", "WL");
 		streetSuffixAbbreviations.put("WELLS", "WLS");
 	}
-
-	public static boolean isLine2Abbreviation(String string) {
-		if(string.equals("STE")){
-			return true;
-		}
-		// TODO Auto-generated method stub
-		return false;
-	}	
 }
