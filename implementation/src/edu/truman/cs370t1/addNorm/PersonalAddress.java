@@ -1,6 +1,12 @@
 package edu.truman.cs370t1.addNorm;
 
-
+/**
+ * This class represent the personal address type, it is capable of normalizing itself and report 
+ * errors that prevent it from being normalized.
+ * @author Aidan Talerico
+ * @author Yuhao Zhang
+ * @version 2016-04-30
+ */
 public class PersonalAddress extends Address {
 	private String state;
 	private String line2;
@@ -10,7 +16,15 @@ public class PersonalAddress extends Address {
 	public PersonalAddress(){
 		super();
 	}
-
+	
+	/**
+	 * Constructor for PersonalAddress
+	 * @param zip4 the four digit zip code
+	 * @param zip5 the five digit zip code 
+	 * @param state the state name
+	 * @param city the city name
+	 * @param line1 the delivery address line that possibly contains the secondary address 
+	 */
 	public PersonalAddress(String zip4, String zip5, String state, String city, String line1) {
 		super();
 		this.zip4 = zip4;
@@ -44,6 +58,10 @@ public class PersonalAddress extends Address {
 		return false;
 	}
 	
+	/**
+	 * This method returns the secondary address 
+	 * @return the secondary address 
+	 */	
 	public String getLine2() {
 		return line2;
 	}	

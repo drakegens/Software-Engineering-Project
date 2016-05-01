@@ -3,6 +3,12 @@ package edu.truman.cs370t1.addNorm;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * This class resolves the street name, directionals and their abbreviations
+ * @author Yuhao Zhang
+ * @author Aidan Talerico
+ */
 public class Streets {
 	
 	private static Map<String, String> streetSuffixAbbreviations = null;

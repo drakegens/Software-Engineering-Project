@@ -3,6 +3,11 @@ package edu.truman.cs370t1.addNorm;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class resolves state names and abbreviations
+ * @author Yuhao Zhang
+ * @author Aidan Talerico
+ */
 public class States {
 	
 	private static Map<String, String> stateToAbbreviation = null;
