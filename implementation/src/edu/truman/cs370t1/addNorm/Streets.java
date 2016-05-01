@@ -398,5 +398,13 @@ public class Streets {
 		streetSuffixAbbreviations.put("WY", "WAY");
 		streetSuffixAbbreviations.put("WELL", "WL");
 		streetSuffixAbbreviations.put("WELLS", "WLS");
+	}
+
+	public static boolean isLine2Abbreviation(String string) {
+		if(string.equals("STE")){
+			return true;
+		}
+		// TODO Auto-generated method stub
+		return false;
 	}	
 }

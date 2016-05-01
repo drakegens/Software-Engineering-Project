@@ -9,7 +9,7 @@ protected String zip4;
 protected String line1;
 protected String flag;
 protected String city;
-protected String error;
+protected String error = null;
 
 public String getError() {
 	return error;

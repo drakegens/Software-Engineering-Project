@@ -3,7 +3,10 @@ package edu.truman.cs370t1.addNorm;
 
 public class PersonalAddress extends Address {
 	private String state;
+	private String line2;
 	
+
+
 	public PersonalAddress(){
 		super();
 	}
@@ -18,7 +21,36 @@ public class PersonalAddress extends Address {
 	}
 		
 	
+	private boolean hasLine2(){
+		int streetFieldLength = this.line1.split(" ").length;
+		if(this.line1.contains(",")){
+			this.line2 = line1.split(",")[1].trim();
+			this.line1 = line1.split(",")[0].trim();
+			return true;
+		}
+		else if(streetFieldLength >= 2 && 
+				Streets.isLine2Abbreviation(this.line1.split(" ")[streetFieldLength - 2])){
+			String newline1 = "";
+			for(int i = 0; i < streetFieldLength - 2; i++){
+				newline1 += this.line1.split(" ")[i] + " "; 
+			}
+			this.line2 = this.line1.split(" ")[streetFieldLength - 2] 
+					+ " " + this.line1.split(" ")[streetFieldLength - 1];
+			this.line1 = newline1.trim();
+
+			return true;
+		}
+		return false;
+	}
+	
+	public String getLine2() {
+		return line2;
+	}	
+	
 	private void normalizeLine1(){
+		if(hasLine2()){
+			this.line1.replaceAll(line2, "");
+		}
 		String[] line1Fields = line1.split(" ");
 		String suffix = Streets.getStreetSuffixAbbreviation(line1Fields[line1Fields.length - 1]);
 		if(suffix != null){
@@ -44,6 +76,7 @@ public class PersonalAddress extends Address {
 		}
 		else{
 			if(!States.isAbbreviation(state)){
+				this.error = "Unrecognized state abbreviation";
 				return false;
 			}
 		}
@@ -53,9 +86,11 @@ public class PersonalAddress extends Address {
 	
 	private boolean normalizeZip5(){
 		if(zip5.length() != 5){
+			this.error = "Zip5 field too short";
 			return false;
 		}
 		if(allNumbers(zip5) == false){
+			this.error = "Zip5 field not all numeric";
 			return false;
 		}
 		return true;
@@ -63,9 +98,11 @@ public class PersonalAddress extends Address {
 	
 	private boolean normalizeZip4(){
 		if(zip4.length() != 4){
+			this.error = "Zip4 field too short";
 			return false;
 		}
 		if(allNumbers(zip4) == false){
+			this.error = "Zip4 field not all numeric";
 			return false;
 		}
 		
@@ -83,8 +120,11 @@ public class PersonalAddress extends Address {
 	
 	@Override
 	public boolean normalize() {
+		if(this.error != null && this.error.length() != 0){
+			this.error = "Not enough field for personal address";
+			return false;
+		}
 		normalizeLine1();
-		
 		if(normalizeZip4() == false){
 			return false;
 		}
@@ -96,5 +136,8 @@ public class PersonalAddress extends Address {
 		}
 		return true;		
 	}
+	
+	
+	
 
 }
