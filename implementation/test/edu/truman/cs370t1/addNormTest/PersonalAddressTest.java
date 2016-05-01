@@ -5,41 +5,41 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.truman.cs370t1.addNorm.Address;
 import edu.truman.cs370t1.addNorm.PersonalAddress;
 
 public class PersonalAddressTest {
 	
-	Address address;
-	Address address2;
-	Address address3;
-	PersonalAddress address4;
-	PersonalAddress address5;
+	PersonalAddress passingAddress1;
+	PersonalAddress passingAddress2;
+	PersonalAddress passingAddress3;
+	PersonalAddress passingAddress4;
+	
+	PersonalAddress failingAddress1;
 
 	@Before
 	public void setUp() throws Exception {
-		address = new PersonalAddress("1234","12345", "AK", "kirksville", "123 Southwest First Alley");
-		address2 = new PersonalAddress("1234","12345", "Alabama", "St. Louis", "south First ALLEE");
-		address3 = new PersonalAddress("ABCD","ABCDE", "Alama", "kansas city", "NORTh First Allee WEST");
-		address4 = new PersonalAddress("1234","12345", "Alabama", "kansas city", "NORTh First Allee WEST,STE 304");
-		address5 = new PersonalAddress("1234","12345", "Alabama", "kansas city", "NORTh First Allee WEST STE 304");
-
+		passingAddress1 = new PersonalAddress("1234","12345", "AK", "kirksville", "123 Southwest First Alley");
+		passingAddress2 = new PersonalAddress("1234","12345", "Alabama", "St. Louis", "south First ALLEE");
+		passingAddress3 = new PersonalAddress("1234","12345", "Alabama", "kansas city", "NORTh First Allee WEST,STE #304");
+		passingAddress4 = new PersonalAddress("1234","12345", "Alabama", "kansas city", "NORTh First Allee WEST STE 304");
+		failingAddress1 = new PersonalAddress("ABCD","ABCDE", "Alama", "kansas city", "NORTh First Allee WEST");
 	}
 
 	@Test
 	public void testNormalize() {
-		assertTrue(address.normalize());
-		assertTrue(address2.normalize());
-		assertFalse(address3.normalize());
-		assertTrue(address4.normalize());
-		assertTrue(address5.normalize());		
-		assertEquals("123 SW FIRST ALY", address.getLine1());
-		assertEquals("S FIRST ALY", address2.getLine1());
-		assertEquals("N FIRST ALY W", address3.getLine1());
-		assertEquals("STE 304", address4.getLine2());
-		assertEquals("N FIRST ALY W", address4.getLine1());
-		assertEquals("STE 304", address5.getLine2());
-		assertEquals("N FIRST ALY W", address5.getLine1());
+		assertTrue(passingAddress1.normalize());
+		assertTrue(passingAddress2.normalize());
+		assertTrue(passingAddress3.normalize());
+		assertTrue(passingAddress4.normalize());	
+		assertFalse(failingAddress1.normalize());
+
+		assertEquals("123 SW FIRST ALY", passingAddress1.getLine1());
+		assertEquals("S FIRST ALY", passingAddress2.getLine1());
+		assertEquals("N FIRST ALY W", failingAddress1.getLine1());
+		assertEquals("STE # 304", passingAddress3.getLine2());
+		assertEquals("N FIRST ALY W", passingAddress3.getLine1());
+		assertEquals("STE 304", passingAddress4.getLine2());
+		assertEquals("N FIRST ALY W", passingAddress4.getLine1());
 		
 	}
 

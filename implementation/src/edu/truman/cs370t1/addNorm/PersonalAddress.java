@@ -18,6 +18,7 @@ public class PersonalAddress extends Address {
 		this.state = state;
 		this.city = city.toUpperCase();
 		this.line1 = line1.toUpperCase();
+		this.line2 = null;
 	}
 		
 	
@@ -46,6 +47,18 @@ public class PersonalAddress extends Address {
 	public String getLine2() {
 		return line2;
 	}	
+	
+	
+	private void normalizeLine2() {
+		if (this.line2.contains("#") && !this.line1.contains("# ")) {
+			this.line2 = this.line2.replaceAll("#", "# ");
+		}
+		String prefix = this.line2.split(" ")[0];
+		if (!Streets.isDesignatorAbbreviation(prefix) 
+				&& Streets.getDesignatorAbbreviation(prefix) != null) {
+			this.line2.replace(prefix, Streets.getDesignatorAbbreviation(prefix));
+		}
+	}
 	
 	private void normalizeLine1(){
 		if(hasLine2()){
@@ -125,6 +138,9 @@ public class PersonalAddress extends Address {
 			return false;
 		}
 		normalizeLine1();
+		if (this.line2 != null){
+			normalizeLine2();
+		}
 		if(normalizeZip4() == false){
 			return false;
 		}
