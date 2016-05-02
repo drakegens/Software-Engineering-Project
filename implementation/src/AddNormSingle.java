@@ -65,7 +65,7 @@ public class AddNormSingle extends JFrame{
 					PersonalAddress personalAddress = new PersonalAddress(zip4.getText(), 
 							zip5.getText(), state.getText(), city.getText(), street.getText());
 					if(personalAddress.normalize()){
-						result.setText(personalAddress.getLine1() + personalAddress.getLine2());
+						result.setText(personalAddress.toString());
 					}
 					else{
 						result.setText(personalAddress.getError());
