@@ -88,11 +88,13 @@ public class PersonalAddress extends Address {
 			line1Fields[line1Fields.length - 1] = suffix;
 		}
 		else{
-			suffix = Streets.getStreetSuffixAbbreviation(line1Fields[line1Fields.length - 2]);
-			if(suffix != null){
-				line1Fields[line1Fields.length - 2] = suffix;
-			}			
-			line1Fields[line1Fields.length - 1] = Streets.getDirectionAbbreviation(line1Fields[line1Fields.length - 1]);
+			if (line1Fields.length > 1){
+				suffix = Streets.getStreetSuffixAbbreviation(line1Fields[line1Fields.length - 2]);
+				if(suffix != null){
+					line1Fields[line1Fields.length - 2] = suffix;
+				}			
+				line1Fields[line1Fields.length - 1] = Streets.getDirectionAbbreviation(line1Fields[line1Fields.length - 1]);				
+			}
 		}
 		for(int i = 0; i < 2 && i < line1Fields.length; i++){
 			line1Fields[i] = Streets.getDirectionAbbreviation(line1Fields[i]);
@@ -116,6 +118,9 @@ public class PersonalAddress extends Address {
 	}
 	
 	private boolean normalizeZip5(){
+		if (zip5 == null){
+			return false;
+		}
 		if(zip5.length() != 5){
 			this.error = "Zip5 field too short";
 			return false;
@@ -128,6 +133,9 @@ public class PersonalAddress extends Address {
 	}
 	
 	private boolean normalizeZip4(){
+		if (zip4 == null){
+			return false;
+		}
 		if(zip4.length() != 4){
 			this.error = "Zip4 field too short";
 			return false;
@@ -155,6 +163,9 @@ public class PersonalAddress extends Address {
 			this.error = "Not enough field for personal address";
 			return false;
 		}
+		/*if (this.line1 == null) {
+			return false;
+		}*/
 		normalizeLine1();
 		if (this.line2 != null){
 			normalizeLine2();
@@ -171,7 +182,9 @@ public class PersonalAddress extends Address {
 		return true;		
 	}
 	
-	
+	public String toString(){
+		
+	}
 	
 
 }
