@@ -8,7 +8,7 @@ package edu.truman.cs370t1.addNorm;
 public abstract class Address {
 	
 	
-protected String stateCode;
+protected String state;
 protected String zip5;
 protected String zip4;
 protected String line1;
@@ -60,7 +60,7 @@ protected String error = null;
 	 * @return the state code
 	 */
 	public String getStateCode() {
-		return stateCode;
+		return state;
 	}
 
 
@@ -69,7 +69,7 @@ protected String error = null;
 	 * @param stateCode the state code
 	 */
 	public void setStateCode(String stateCode) {
-		this.stateCode = stateCode;
+		this.state = stateCode;
 	}
 
 

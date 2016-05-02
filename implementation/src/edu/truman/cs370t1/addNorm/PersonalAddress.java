@@ -8,10 +8,7 @@ package edu.truman.cs370t1.addNorm;
  * @version 2016-04-30
  */
 public class PersonalAddress extends Address {
-	private String state;
 	private String line2;
-	
-
 
 	public PersonalAddress(){
 		super();
@@ -89,11 +86,13 @@ public class PersonalAddress extends Address {
 			line1Fields[line1Fields.length - 1] = suffix;
 		}
 		else{
-			suffix = Streets.getStreetSuffixAbbreviation(line1Fields[line1Fields.length - 2]);
-			if(suffix != null){
-				line1Fields[line1Fields.length - 2] = suffix;
-			}			
-			line1Fields[line1Fields.length - 1] = Streets.getDirectionAbbreviation(line1Fields[line1Fields.length - 1]);
+			if (line1Fields.length > 1){
+				suffix = Streets.getStreetSuffixAbbreviation(line1Fields[line1Fields.length - 2]);
+				if(suffix != null){
+					line1Fields[line1Fields.length - 2] = suffix;
+				}			
+				line1Fields[line1Fields.length - 1] = Streets.getDirectionAbbreviation(line1Fields[line1Fields.length - 1]);				
+			}
 		}
 		for(int i = 0; i < 2 && i < line1Fields.length; i++){
 			line1Fields[i] = Streets.getDirectionAbbreviation(line1Fields[i]);
@@ -117,6 +116,9 @@ public class PersonalAddress extends Address {
 	}
 	
 	private boolean normalizeZip5(){
+		if (zip5 == null){
+			return false;
+		}
 		if(allNumbers(zip5) == false){
 			this.error += "Zip5 field not all numeric | ";
 			return false;
@@ -131,8 +133,11 @@ public class PersonalAddress extends Address {
 	private boolean normalizeZip4(){
 		if(allNumbers(zip4) == false){
 			this.error += "Zip4 field not all numeric | ";
+		}
+		if (zip4 == null){
 			return false;
 		}
+
 		else if(zip4.length() != 4){
 			this.error += "Zip4 field length incorrect | ";
 			return false;
@@ -156,6 +161,9 @@ public class PersonalAddress extends Address {
 			this.error += "Not enough field for personal address | ";
 			result = false;
 		}
+		/*if (this.line1 == null) {
+			return false;
+		}*/
 		normalizeLine1();
 		if (this.line2 != null){
 			normalizeLine2();
@@ -172,7 +180,28 @@ public class PersonalAddress extends Address {
 		return result;		
 	}
 	
-	
+	public String toString(){
+		String to_return = "";
+		if (line1 != null){
+			to_return += line1 + "\t";
+		}
+		if (line2 != null){
+			to_return += line2 + "\t";
+		}
+		if (city != null){
+			to_return += city + "\t";
+		}
+		if (state != null){
+			to_return += state + "\t";
+		}
+		if (zip5 != null){
+			to_return += zip5 + "\t";
+		}
+		if (zip4 != null){
+			to_return += zip4 + "\t";
+		}
+		return to_return.trim();
+	}
 	
 
 }

@@ -119,9 +119,9 @@ public class AddNormBatch {
 	public static void normalizeAddressesToOutputFiles(PrintWriter outNormalized, PrintWriter outError,
 			Address address) {
 		if (address.normalize()){
-			outNormalized.println(address);
+			outNormalized.println(address.toString());
 		} else {
-			outError.println(address);
+			outError.println(address.toString());
 		}
 	}
 }
