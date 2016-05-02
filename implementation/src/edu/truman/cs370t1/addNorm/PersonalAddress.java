@@ -81,6 +81,9 @@ public class PersonalAddress extends Address {
 			this.line1.replaceAll(line2, "");
 		}
 		String[] line1Fields = line1.split(" ");
+		if(line1Fields.length <= 1){
+			return;
+		}
 		String suffix = Streets.getStreetSuffixAbbreviation(line1Fields[line1Fields.length - 1]);
 		if(suffix != null){
 			line1Fields[line1Fields.length - 1] = suffix;
