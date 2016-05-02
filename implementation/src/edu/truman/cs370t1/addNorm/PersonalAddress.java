@@ -27,8 +27,8 @@ public class PersonalAddress extends Address {
 		this.zip4 = zip4;
 		this.zip5 = zip5;
 		this.state = state;
-		this.city = city.toUpperCase();
-		this.line1 = line1.toUpperCase();
+		this.city = city;
+		this.line1 = line1;
 		this.line2 = null;
 		this.error = "";
 	}
@@ -160,13 +160,18 @@ public class PersonalAddress extends Address {
 	@Override
 	public boolean normalize() {
 		boolean result = true;
+		this.city = this.city.toUpperCase();
+		this.line1 = this.line1.toUpperCase();
+		if(line1.equals("\\N")){
+			 result = false;
+		}
 		if(this.error != null && this.error.length() != 0){
 			this.error += "Not enough field for personal address | ";
 			result = false;
 		}
-		/*if (this.line1 == null) {
+		if (this.line1 == null) {
 			return false;
-		}*/
+		}
 		normalizeLine1();
 		if (this.line2 != null){
 			normalizeLine2();
