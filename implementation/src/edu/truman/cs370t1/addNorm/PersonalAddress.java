@@ -134,12 +134,13 @@ public class PersonalAddress extends Address {
 	}
 	
 	private boolean normalizeZip4(){
-		if(allNumbers(zip4) == false){
-			this.error += "Zip4 field not all numeric | ";
-		}
 		if (zip4 == null){
 			return false;
 		}
+		if(allNumbers(zip4) == false){
+			this.error += "Zip4 field not all numeric | ";
+		}
+		
 
 		else if(zip4.length() != 4){
 			this.error += "Zip4 field length incorrect | ";
@@ -160,7 +161,15 @@ public class PersonalAddress extends Address {
 	@Override
 	public boolean normalize() {
 		boolean result = true;
-		this.city = this.city.toUpperCase();
+		if (this.city == null)
+		{
+			result = false;
+		} else {
+			this.city = this.city.toUpperCase();			
+		}
+		if (this.line1 == null) {
+			return false;
+		}
 		this.line1 = this.line1.toUpperCase();
 		if(line1.equals("\\N")){
 			 result = false;
@@ -169,9 +178,7 @@ public class PersonalAddress extends Address {
 			this.error += "Not enough field for personal address | ";
 			result = false;
 		}
-		if (this.line1 == null) {
-			return false;
-		}
+
 		normalizeLine1();
 		if (this.line2 != null){
 			normalizeLine2();
