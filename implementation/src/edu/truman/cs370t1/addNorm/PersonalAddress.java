@@ -8,10 +8,7 @@ package edu.truman.cs370t1.addNorm;
  * @version 2016-04-30
  */
 public class PersonalAddress extends Address {
-	private String state;
 	private String line2;
-	
-
 
 	public PersonalAddress(){
 		super();
@@ -183,7 +180,26 @@ public class PersonalAddress extends Address {
 	}
 	
 	public String toString(){
-		
+		String to_return = "";
+		if (line1 != null){
+			to_return += line1 + "\t";
+		}
+		if (line2 != null){
+			to_return += line2 + "\t";
+		}
+		if (city != null){
+			to_return += city + "\t";
+		}
+		if (state != null){
+			to_return += state + "\t";
+		}
+		if (zip5 != null){
+			to_return += zip5 + "\t";
+		}
+		if (zip4 != null){
+			to_return += zip4 + "\t";
+		}
+		return to_return.trim();
 	}
 	
 
