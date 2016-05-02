@@ -1,6 +1,9 @@
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;;
+import javax.swing.*;
+
+import edu.truman.cs370t1.addNorm.Address;
+import edu.truman.cs370t1.addNorm.PersonalAddress;;
 
 
 public class AddNormSingle extends JFrame{
@@ -20,8 +23,12 @@ public class AddNormSingle extends JFrame{
 		normalizeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				Address address = AddNormBatch.parse(addressInput.getText());
+				PersonalAddress personalAddress = new PersonalAddress(address.getZip4(), 
+						address.getZip5(), address.getStateCode(), address.getCity(), address.getLine1());
+				if(personalAddress.normalize()){
+					addressInput.setText(personalAddress.getLine1() + personalAddress.getLine2());
+				}
 			}
 		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
