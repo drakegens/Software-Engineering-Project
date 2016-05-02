@@ -32,7 +32,7 @@ public class AddNormBatch {
 	 * @param args the file name containing addresses specified by the user 
 	 */
 	public static void main(String[] args) {
-		String filename = "C:\\Users\\Drake\\Documents\\cs370t1\\data\\dataset_2016_04_14.txt";// eventually																								// args[0]
+		String filename = args[0];//"C:\\Users\\Drake\\Documents\\cs370t1\\data\\dataset_2016_04_14.txt";// eventually																								// args[0]
 		createInputFile(filename);
 		createOutputFiles();
 	}

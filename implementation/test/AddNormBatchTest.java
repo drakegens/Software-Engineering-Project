@@ -1,9 +1,11 @@
 import static org.junit.Assert.*;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 import org.junit.After;
 import org.junit.Before;
@@ -18,13 +20,13 @@ public class AddNormBatchTest {
 	@Before
 	public void setUpStreams() {
 	    System.setOut(new PrintStream(outContent));
-	    //System.setErr(new PrintStream(errContent));
+	    
 	}
 
 	@After
 	public void cleanUpStreams() {
 	    System.setOut(null);
-	    //System.setErr(null);
+	    
 	}
 	
 	@Test
@@ -82,32 +84,55 @@ public class AddNormBatchTest {
 		//assertTrue(file.exists());
 	}
 	
-//	@Test
-//	public void testCreateOutputFiles() {
-//		AddNormBatch anb = new AddNormBatch();
-//		anb.createOutputFiles();
-//		assertNotEquals("File could not be created", outContent.toString());
-//	}
+	@Test
+	public void testCreateOutputFiles() {
+		AddNormBatch anb = new AddNormBatch();
+		anb.createOutputFiles();
+		assertNotEquals("File could not be created", outContent.toString());
+	}
 	
-//	@Test
-//	public void testnormalizeAddressesToOutputFiles(){
-//		AddNormBatch anb = new AddNormBatch();
-//		String addressString = "55 LeMay Plaza South	Maxwell AFB	AL	36112	6335";
-//		//AddNormBatch anb = new AddNormBatch();
-//		
-//		Address address = anb.parse(addressString);
-//		try {
-//			PrintWriter outNormalized = new PrintWriter("normalized_addresses.txt");
-//			PrintWriter outError = new PrintWriter("unnormalized_addresses.txt");
-//			//iterateThroughAddressCollection(outNormalized, outError);		
-//			anb.normalizeAddressesToOutputFiles(outNormalized, outError, address);
-//			assertEquals
-//			outNormalized.close();
-//			outError.close();
-//		} catch (FileNotFoundException exception) {
-//			System.out.println("File could not be created");
-//		}
-//		
-//	}
+	@Test
+	public void testNormalizeAddressesToOutputFiles(){
+		AddNormBatch anb = new AddNormBatch();
+		String normalizableAddressString = "55 LeMay Plaza South	Maxwell AFB	AL	36112	6335";
+		
+		Address normalizableAddress = anb.parse(normalizableAddressString);
+		
+		try {
+			File normFilename = new File("normalized_addresses.txt");
+			File unnormFilename = new File("unnormalized_addresses.txt");
+			PrintWriter outNormalized = new PrintWriter(normFilename);
+			PrintWriter outError = new PrintWriter(unnormFilename);	
+			anb.normalizeAddressesToOutputFiles(outNormalized, outError, normalizableAddress);
+			
+			outNormalized.close();
+			outError.close();
+		} catch (FileNotFoundException exception) {
+			System.out.println("File could not be created");
+		}
+		
+	}
+	
+	@Test
+	public void testUnNormalizableAddressesToOutputFiles(){
+		AddNormBatch anb = new AddNormBatch();
+		String unNormalizableAddressString = "blah	6335";
+		
+		Address unnormalizableAddress = anb.parse(unNormalizableAddressString);
+		
+		try {
+			File normFilename = new File("normalized_addresses.txt");
+			File unnormFilename = new File("unnormalized_addresses.txt");
+			PrintWriter outNormalized = new PrintWriter(normFilename);
+			PrintWriter outError = new PrintWriter(unnormFilename);	
+			anb.normalizeAddressesToOutputFiles(outNormalized, outError, unnormalizableAddress);
+			
+			outNormalized.close();
+			outError.close();
+		} catch (FileNotFoundException exception) {
+			System.out.println("File could not be created");
+		}
+		
+	}
 
 }

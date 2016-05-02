@@ -181,6 +181,9 @@ public class PersonalAddress extends Address {
 	
 	public String toString(){
 		String to_return = "";
+		if (error != null){
+			to_return += this.error;
+		}
 		if (line1 != null){
 			to_return += line1 + "\t";
 		}

@@ -1,0 +1,92 @@
+123 Example Street	Kirksville	MO	63501	4001
+55 LeMay Plaza South	Maxwell AFB	AL	36112	6335
+3214 E. Race Ave.	Searcy	AR	72143	4810
+10930 N. Tatum Blvd.	Phoenix	AZ	85028	6069
+1145 Sturgis Road	Twentynine Palms	CA	92278	8250
+200 Mercy Circle	Camp Pendleton	CA	92055	5191
+1210 Cheadle Hall - Office of Admissions	Santa Barbara	CA	93106	2014
+260 Aldrich Hall - Office of Admissions	Irvine	CA	92697	1075
+110 Sproul Hall	Suite 5800 - Office of Admissions	Berkeley	CA	94720	5800
+513 Parnassus Avenue	San Francisco	CA	94143	0410
+3333 Regis Boulevard	Denver	CO	80221	1154
+181 West Meadow Dr.	Suite 400	Vail	CO	81657	5058
+1024 S. Lemay Ave.	Fort Collins	CO	80524	3929
+750 Hospital Loop	Craig	CO	81625	8750
+181 W. Meadow Dr.	Vail	CO	81657	5242
+4700 East Iliff Avenue	Denver	CO	80222	6025
+10300 SW 216th St.	Miami	FL	33190	1003
+7119 Langley Street	Milton	FL	32570	6105
+2025 Indian Rocks Road	Largo	FL	33774	1035
+601 E. Rollins St.	Orlando 	FL	32803	1248
+2080 Child St.	Jacksonville	FL	32214	5000
+92 W. Miller St.	Orlando	FL	32806	2032
+1111 6th Ave.	Des Moines	IA	50314	2611
+501 South White Street	Suite 1	Mount Pleasant	IA	52641	2600
+601 Highway 6 West	Iowa City	IA	52246	2208
+1 Jack Foster Dr.	Shenandoah	IA	51601	4586
+1993 Tiger Trail	Wheaton	IL	60189	9990
+405 West Jackson Street	Carbondale	IL	62902	9000
+\N	\N	IL	62230	3510
+\N	\N	IL	62249	1296
+\N	\N	IL	62249	1677
+\N	\N	IL	62471	3228
+\N	\N	IL	62832	3866
+\N	\N	IL	62837	1219
+\N	\N	IL	62926	1103
+\N	\N	IL	62002	6321
+\N	\N	IL	62002	4569
+\N	\N	IL	62025	3760
+\N	\N	IL	62034	3508
+\N	\N	IL	62034	2916
+\N	\N	IL	62040	4747
+\N	\N	IL	62040	4701
+\N	\N	IL	62062	5624
+\N	\N	IL	62062	8562
+\N	\N	IL	62205	1803
+\N	\N	IL	62206	1212
+\N	\N	IL	62206	1212
+\N	\N	IL	62208	1332
+\N	\N	IL	62220	1902
+\N	\N	IL	62220	1952
+\N	\N	IL	62220	1952
+\N	\N	IL	62220	1987
+\N	\N	IL	62220	1952
+\N	\N	IL	62220	1901
+\N	\N	IL	62220	1900
+\N	\N	IL	62223	5000
+\N	\N	IL	62226	5368
+\N	\N	IL	62226	5372
+\N	\N	IL	62234	4061
+\N	\N	IL	62234	4410
+\N	\N	IL	62243	4082
+\N	\N	IL	62258	1447
+\N	\N	IL	62260	2210
+\N	\N	IL	62269	1953
+\N	\N	IL	62269	1953
+\N	\N	IL	62285	2933
+\N	\N	IL	62294	1303
+2868 N Broadway St	Chicago	IL	60657	6017
+612 N 11th Street	Quincy	IL	62794	9620
+520 Valley View Dr.	Moline	IL	61265	6152
+5207 Main St Ste 4	Downers Grove	IL	60515	5071
+206 N. Pearl St.	Teutopolis	IL	62467	1134
+1653 W Congress Pkwy	Chicago	IL	60612	3833
+200 N. 7th Street	Terre Haute	IN	47809	1902
+702 Barnhill Drive	Indianapolis	IN	46202	5128
+1440 East County Line Rd.	Indianapolis	IN	46227	0963
+13260 Switzer	Overland Park	KS	66213	3306
+2030 E. College Way	Olathe	KS	66062	1899
+1010 North Kansas	Wichita	KS	67214	3199
+8717 West 110th Street	Suite 500	Overland Park	KS	66210	1863
+14221 Metcalf Ave. #100	Overland Park	KS	66223	3333
+2501 East 13th	Hays	KS	67601	2764
+500 Limit St.	Leavenworth	KS	66048	4435
+7011 W. 121st St. #105	Overland Park	KS	66209	2029
+10701 Nall Ave.	Overland Park	KS	66211	1363
+6850 Hilltop Rd.	Shawnee	KS	66227	3576
+601 SW Corporate Vw	Topeka	KS	66615	1245
+9000 Park St.	Suite 100	Lenexa	KS	66215	3306
+107 S. 6th St.	Hiawatha	KS	66434	2306
+1133 College Ave.	Manhattan	KS	66502	2770
+909 SW Mulvane St.	Topeka	KS	66606	1677
+740 S. Limestone	K528	Lexington	KY	40536	0284
