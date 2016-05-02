@@ -93,7 +93,7 @@ public class Streets {
 	 * already been populated.
 	 */
 	private static void populateDesignatorAbbreviations() {
-		if(streetSuffixAbbreviations != null){
+		if(designatorAbbreviations != null){
 			return;
 		}
 		designatorAbbreviations = new HashMap<>();

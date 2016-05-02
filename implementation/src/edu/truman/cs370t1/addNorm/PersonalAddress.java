@@ -27,9 +27,10 @@ public class PersonalAddress extends Address {
 		this.zip4 = zip4;
 		this.zip5 = zip5;
 		this.state = state;
-		this.city = city.toUpperCase();
-		this.line1 = line1.toUpperCase();
+		this.city = city;
+		this.line1 = line1;
 		this.line2 = null;
+		this.error = "";
 	}
 		
 	
@@ -80,6 +81,9 @@ public class PersonalAddress extends Address {
 			this.line1.replaceAll(line2, "");
 		}
 		String[] line1Fields = line1.split(" ");
+		if(line1Fields.length <= 1){
+			return;
+		}
 		String suffix = Streets.getStreetSuffixAbbreviation(line1Fields[line1Fields.length - 1]);
 		if(suffix != null){
 			line1Fields[line1Fields.length - 1] = suffix;
@@ -106,7 +110,7 @@ public class PersonalAddress extends Address {
 		}
 		else{
 			if(!States.isAbbreviation(state)){
-				this.error = "Unrecognized state abbreviation";
+				this.error += "Unrecognized state abbreviation | ";
 				return false;
 			}
 		}
@@ -118,30 +122,29 @@ public class PersonalAddress extends Address {
 		if (zip5 == null){
 			return false;
 		}
-		if(zip5.length() != 5){
-			this.error = "Zip5 field too short";
-			return false;
-		}
 		if(allNumbers(zip5) == false){
-			this.error = "Zip5 field not all numeric";
+			this.error += "Zip5 field not all numeric | ";
 			return false;
 		}
+		else if(zip5.length() != 5){
+			this.error += "Zip5 field length incorrect | ";
+			return false;
+		}		
 		return true;
 	}
 	
 	private boolean normalizeZip4(){
+		if(allNumbers(zip4) == false){
+			this.error += "Zip4 field not all numeric | ";
+		}
 		if (zip4 == null){
 			return false;
 		}
-		if(zip4.length() != 4){
-			this.error = "Zip4 field too short";
+
+		else if(zip4.length() != 4){
+			this.error += "Zip4 field length incorrect | ";
 			return false;
 		}
-		if(allNumbers(zip4) == false){
-			this.error = "Zip4 field not all numeric";
-			return false;
-		}
-		
 		return true;
 	}
 	
@@ -156,27 +159,33 @@ public class PersonalAddress extends Address {
 	
 	@Override
 	public boolean normalize() {
+		boolean result = true;
+		this.city = this.city.toUpperCase();
+		this.line1 = this.line1.toUpperCase();
+		if(line1.equals("\\N")){
+			 result = false;
+		}
 		if(this.error != null && this.error.length() != 0){
-			this.error = "Not enough field for personal address";
+			this.error += "Not enough field for personal address | ";
+			result = false;
+		}
+		if (this.line1 == null) {
 			return false;
 		}
-		/*if (this.line1 == null) {
-			return false;
-		}*/
 		normalizeLine1();
 		if (this.line2 != null){
 			normalizeLine2();
 		}
 		if(normalizeZip4() == false){
-			return false;
+			result =  false;
 		}
 		if(normalizeZip5() == false){
-			return false;
+			result = false;
 		}
 		if(normalizeState() == false){
-			return false;
+			result = false;
 		}
-		return true;		
+		return result;		
 	}
 	
 	public String toString(){
