@@ -33,6 +33,7 @@ public class PersonalAddress extends Address {
 		this.city = city.toUpperCase();
 		this.line1 = line1.toUpperCase();
 		this.line2 = null;
+		this.error = "";
 	}
 		
 	
@@ -107,7 +108,7 @@ public class PersonalAddress extends Address {
 		}
 		else{
 			if(!States.isAbbreviation(state)){
-				this.error = "Unrecognized state abbreviation";
+				this.error += "Unrecognized state abbreviation | ";
 				return false;
 			}
 		}
@@ -116,27 +117,26 @@ public class PersonalAddress extends Address {
 	}
 	
 	private boolean normalizeZip5(){
-		if(zip5.length() != 5){
-			this.error = "Zip5 field too short";
-			return false;
-		}
 		if(allNumbers(zip5) == false){
-			this.error = "Zip5 field not all numeric";
+			this.error += "Zip5 field not all numeric | ";
 			return false;
 		}
+		else if(zip5.length() != 5){
+			this.error += "Zip5 field length incorrect | ";
+			return false;
+		}		
 		return true;
 	}
 	
 	private boolean normalizeZip4(){
-		if(zip4.length() != 4){
-			this.error = "Zip4 field too short";
-			return false;
-		}
 		if(allNumbers(zip4) == false){
-			this.error = "Zip4 field not all numeric";
+			this.error += "Zip4 field not all numeric | ";
 			return false;
 		}
-		
+		else if(zip4.length() != 4){
+			this.error += "Zip4 field length incorrect | ";
+			return false;
+		}
 		return true;
 	}
 	
@@ -151,24 +151,25 @@ public class PersonalAddress extends Address {
 	
 	@Override
 	public boolean normalize() {
+		boolean result = true;
 		if(this.error != null && this.error.length() != 0){
-			this.error = "Not enough field for personal address";
-			return false;
+			this.error += "Not enough field for personal address | ";
+			result = false;
 		}
 		normalizeLine1();
 		if (this.line2 != null){
 			normalizeLine2();
 		}
 		if(normalizeZip4() == false){
-			return false;
+			result =  false;
 		}
 		if(normalizeZip5() == false){
-			return false;
+			result = false;
 		}
 		if(normalizeState() == false){
-			return false;
+			result = false;
 		}
-		return true;		
+		return result;		
 	}
 	
 	
