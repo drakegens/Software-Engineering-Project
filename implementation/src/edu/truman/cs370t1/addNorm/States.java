@@ -98,8 +98,8 @@ public class States {
 		stateToAbbreviation.put("Wisconsin", "WI");
 		stateToAbbreviation.put("Wyoming", "WY");
 		stateToAbbreviation.put("Virgin Islands", "VI");
-		stateToAbbreviation.put("Palau ", "PW");
-		stateToAbbreviation.put("Puerto Rico ", "PR");
+		stateToAbbreviation.put("Palau", "PW");
+		stateToAbbreviation.put("Puerto Rico", "PR");
 		stateToAbbreviation.put("Northern Marianas", "MP");
 		stateToAbbreviation.put("Micronesia", "FM");
 		stateToAbbreviation.put("District of Columbia", "DC");
