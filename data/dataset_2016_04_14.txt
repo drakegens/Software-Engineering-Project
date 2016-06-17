@@ -1,3 +1,4 @@
+123 Example Street	Kirksville	MO	63501	4001
 Aleknagik Adventist Church	Dillingham	AK	99576	
 901 Airport Way	Fairbanks	AK	99701	
 1001 Noble St	Fairbanks	AK	99701	
